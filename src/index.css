@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Império Doces Distribuidora — Design System
+   Warm candy palette: deep raspberry red + golden yellow, cream backgrounds.
+*/
+
+@layer base {
+  :root {
+    --background: 36 50% 97%;
+    --foreground: 350 35% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 350 35% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 35% 15%;
+
+    /* Império red (mais vibrante, alinhado ao logo) */
+    --primary: 0 85% 50%;
+    --primary-foreground: 42 95% 98%;
+    --primary-glow: 12 90% 55%;
+
+    /* Golden honey */
+    --secondary: 42 95% 55%;
+    --secondary-foreground: 350 50% 15%;
+
+    --muted: 36 30% 92%;
+    --muted-foreground: 350 15% 40%;
+
+    --accent: 42 95% 55%;
+    --accent-foreground: 350 50% 15%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 36 25% 86%;
+    --input: 36 25% 86%;
+    --ring: 348 78% 46%;
+
+    /* WhatsApp brand */
+    --whatsapp: 142 70% 45%;
+    --whatsapp-foreground: 0 0% 100%;
+
+    --radius: 0.85rem;
+
+    --gradient-hero: linear-gradient(135deg, hsl(0 85% 48%) 0%, hsl(8 88% 52%) 50%, hsl(42 95% 55%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(36 50% 98%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(142 70% 42%) 0%, hsl(142 75% 50%) 100%);
+
+    --shadow-card: 0 4px 24px -8px hsl(348 50% 30% / 0.15);
+    --shadow-card-hover: 0 16px 40px -12px hsl(348 60% 30% / 0.25);
+    --shadow-glow: 0 10px 40px -10px hsl(348 85% 55% / 0.55);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 350 25% 8%;
+    --foreground: 36 50% 95%;
+    --card: 350 25% 12%;
+    --card-foreground: 36 50% 95%;
+    --popover: 350 25% 12%;
+    --popover-foreground: 36 50% 95%;
+    --primary: 348 78% 55%;
+    --primary-foreground: 36 60% 98%;
+    --secondary: 42 90% 55%;
+    --secondary-foreground: 350 50% 15%;
+    --muted: 350 20% 18%;
+    --muted-foreground: 36 20% 70%;
+    --accent: 42 90% 55%;
+    --accent-foreground: 350 50% 15%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 350 20% 22%;
+    --input: 350 20% 22%;
+    --ring: 348 78% 55%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-family: 'Poppins', system-ui, -apple-system, sans-serif; }
+  h1, h2, h3, h4 { font-family: 'Poppins', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .bg-gradient-cta { background: var(--gradient-cta); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .transition-smooth { transition: var(--transition-smooth); }
+}
