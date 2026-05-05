@@ -263,7 +263,7 @@ export default function Admin() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <Label htmlFor="price">Preço (R$)</Label>
-                <Input id="price" type="number" step="0.01" min="0" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
+                <Input id="price" type="number" step="0.01" min="0" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} placeholder="Deixe em branco para produto sem preço" />
               </div>
               <div>
                 <Label htmlFor="order">Ordem</Label>

@@ -6,7 +6,7 @@ export interface Product {
   id: string;
   name: string;
   description: string | null;
-  price: number;
+  price: number | null;
   image_url: string | null;
 }
 
@@ -14,7 +14,9 @@ const PLACEHOLDER =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23fce8d8'/><text x='50%' y='50%' font-family='sans-serif' font-size='20' fill='%23b85c2e' text-anchor='middle' dominant-baseline='middle'>Sem imagem</text></svg>";
 
 export function ProductCard({ product }: { product: Product }) {
-  const formatted = product.price.toFixed(2).replace(".", ",");
+  const hasPrice = product.price !== null && product.price !== undefined;
+  const formatted = hasPrice ? product.price!.toFixed(2).replace(".", ",") : null;
+  
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl bg-gradient-card shadow-card transition-smooth hover:shadow-card-hover hover:-translate-y-1">
       <div className="aspect-square w-full overflow-hidden bg-muted">
@@ -32,17 +34,23 @@ export function ProductCard({ product }: { product: Product }) {
             <p className="mt-1 line-clamp-3 text-sm text-muted-foreground">{product.description}</p>
           )}
         </div>
-        <div className="flex items-baseline gap-1">
-          <span className="text-xs font-semibold text-muted-foreground">R$</span>
-          <span className="text-2xl font-extrabold text-primary">{formatted}</span>
-        </div>
+        {hasPrice ? (
+          <div className="flex items-baseline gap-1">
+            <span className="text-xs font-semibold text-muted-foreground">R$</span>
+            <span className="text-2xl font-extrabold text-primary">{formatted}</span>
+          </div>
+        ) : (
+          <div className="text-center text-sm text-muted-foreground italic">
+            Consulte o preço
+          </div>
+        )}
         <Button
           asChild
           size="lg"
           className="w-full bg-gradient-cta font-bold text-whatsapp-foreground hover:opacity-95"
         >
           <a
-            href={whatsappLink(productMessage(product.name, product.price))}
+            href={whatsappLink(productMessage(product.name, hasPrice ? product.price! : 0))}
             target="_blank"
             rel="noopener noreferrer"
           >
