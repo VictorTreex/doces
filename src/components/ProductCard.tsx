@@ -39,11 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
             <span className="text-xs font-semibold text-muted-foreground">R$</span>
             <span className="text-2xl font-extrabold text-primary">{formatted}</span>
           </div>
-        ) : (
-          <div className="text-center text-sm text-muted-foreground italic">
-            Consulte o preço
-          </div>
-        )}
+        ) : null}
         <Button
           asChild
           size="lg"
